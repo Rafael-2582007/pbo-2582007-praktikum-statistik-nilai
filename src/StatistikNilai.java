@@ -39,3 +39,38 @@ public class StatistikNilai {
             return;
         }
 
+        // ===== [TAHAP 3] Jumlah, tertinggi, terendah, grade (putaran pertama) =====
+        int jumlah = 0;
+
+        int tertinggi = 0;
+        int terendah = 100;
+
+        // Index: 0=A, 1=B, 2=C, 3=D, 4=E
+        int[] jumlahGrade = new int[5];
+
+        for (int n : daftar) {
+            jumlah += n;
+
+            if (n > tertinggi) {
+                tertinggi = n;
+            }
+
+            if (n < terendah) {
+                terendah = n;
+            }
+
+            jumlahGrade[indexGrade(n)]++;
+        }
+
+        double rataRata = (double) jumlah / daftar.size();
+
+        // Putaran kedua: hitung yang di atas rata-rata
+        int diAtasRata = 0;
+
+        for (int n : daftar) {
+            if (n > rataRata) {
+                diAtasRata++;
+            }
+        }
+
+
