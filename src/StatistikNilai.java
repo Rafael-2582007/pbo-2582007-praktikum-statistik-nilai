@@ -73,4 +73,46 @@ public class StatistikNilai {
             }
         }
 
+        // ===== [TAHAP 4] Salinan terurut =====
+        ArrayList<Integer> terurut = new ArrayList<>(daftar);
+        Collections.sort(terurut);
+
+        // ===== Cetak hasil =====
+        System.out.printf("%-16s: %s%n", "Nilai tersimpan", daftar);
+        System.out.printf("%-16s: %d%n", "Jumlah", daftar.size());
+
+        System.out.printf(
+                Locale.forLanguageTag("id-ID"),
+                "%-16s: %.2f%n",
+                "Rata-rata",
+                rataRata
+        );
+
+        System.out.printf("%-16s: %d%n", "Tertinggi", tertinggi);
+        System.out.printf("%-16s: %d%n", "Terendah", terendah);
+        System.out.printf("%-16s: %d orang%n", "Di atas rata2", diAtasRata);
+
+        String[] namaGrade = {"A", "B", "C", "D", "E"};
+
+        System.out.printf("%-16s: ", "Distribusi");
+
+        for (int i = 0; i < jumlahGrade.length; i++) {
+            System.out.print(namaGrade[i] + "=" + jumlahGrade[i] + " ");
+        }
+
+        System.out.println();
+
+        System.out.printf("%-16s: %s%n", "Terurut", terurut);
+        System.out.printf("%-16s: %s%n", "Urutan asli", daftar);
+    }
+
+    // Ubah nilai jadi index grade: A=0, B=1, C=2, D=3, E=4
+    static int indexGrade(int nilai) {
+        if (nilai >= 90) return 0;
+        if (nilai >= 80) return 1;
+        if (nilai >= 70) return 2;
+        if (nilai >= 60) return 3;
+        return 4;
+    }
+}
 
